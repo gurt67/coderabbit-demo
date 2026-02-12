@@ -18,3 +18,8 @@ user_input = input("Enter your age: ")
 age = int(user_input)
 
 print("Your hashed password:", hash_password("mypassword"))
+
+password = input("Enter password: ")
+
+if password == "password":
+    print("Access granted")
