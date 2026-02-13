@@ -1,25 +1,32 @@
-# A simple grade calculator for CS101
+# Student Grade Management System
+# Created for CS101 Project 2
+
 def calculate_average(grades):
-    # BUG: This will crash if the list is empty (DivisionByZero)
+    """Calculates the mean score from the provided list of grades."""
     total = sum(grades)
     return total / len(grades)
 
 def get_student_status(average):
-    # LOGIC ERROR: What if the grade is exactly 70? 
-    # CS Students love finding these edge cases.
+    """Determines if a student is passing based on their average score."""
     if average > 70:
         return "Passing"
     elif average < 70:
         return "Failing"
 
-# SMULLY CODE: Hardcoded list instead of a database or file
-students = {"Alice": [85, 90, 78], "Bob": [60, 55, 65], "Charlie": []}
+# Dictionary to store student names and their respective grade lists
+student_data = {
+    "Alice": [85, 90, 78],
+    "Bob": [60, 55, 65],
+    "Charlie": []  # Enrollment pending - no grades yet
+}
 
-for student, grades in students.items():
+# Process and display results for each student
+for student, grades in student_data.items():
     avg = calculate_average(grades)
     status = get_student_status(avg)
-    print(f"Student: {student}, Average: {avg}, Status: {status}")
+    print(f"Student: {student} | Average: {avg} | Status: {status}")
 
-# SECURITY/PRACTICE ISSUE: Using input() without sanitization
-bonus_points = input("Enter bonus points to add: ")
-final_score = 90 + bonus_points # This will crash because bonus_points is a string
+# Add manual bonus points to final project grade
+bonus_points = input("Enter project bonus points: ")
+final_project_score = 90 + bonus_points
+print(f"Final Adjusted Score: {final_project_score}")
